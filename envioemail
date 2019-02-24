@@ -1,0 +1,14 @@
+#sistema de envio de email simples
+#certifique-se que seu servidor de email não bloqueie sua requisição
+#autor: Ítalo Simões
+
+import smtplib  #importe a biblioteca smtplib
+
+email_user = "italosimoesrj@gmail.com" #crie uma variável contendo seu email
+server = smtplib.SMTP("smtp.gmail.com", 587)# aponta o email do servidor com a porta 587
+server.starttls() #inicia o serviço ttls
+server.login(email_user,"suaSenha") #inicia o servidor com suas informações criadas nas variáveis anteriores
+message = "Este e um email de emergencia."  #cria uma variável com a mensagem de sua escolha
+server.sendmail(email_user,"italosimoesrj@gmail.com",message) #envia o email com as informações de usuario, email e mensagem
+print("Email encaminhado com sucesso")  #informa que o envio deu certo
+server.quit() #sai da conexão do servidor
