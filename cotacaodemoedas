@@ -1,0 +1,17 @@
+# sistema de cotação de moedas usando como plataforma o portal hgbrasil
+#autor: Italo Simões
+
+#importe as bibliotecas
+import requests
+import json
+
+#nesta parte você deve criar uma chave pra que funcione o request
+req = requests.get('https://api.hgbrasil.com/finance?format=json-cors&key=')#esta chave quando gerada deve estar após o "key="
+cotacao = json.loads(req.text)#cria uma variavel armazenando o objeto json e em um arquivo temporário req
+
+#imprime as listas carregas nos módulos 'results' entre listas usando nas chaves as palavras reservadas para apresentação dos dados
+print('Dolar para compra: ', cotacao['results']['currencies']['USD']['buy'])
+print('Dolar para venda: ', cotacao['results']['currencies']['USD']['sell'])
+print('Euro: ', cotacao['results']['currencies']['EUR']['buy'])
+print('Bitcoin para compra: ', cotacao['results']['currencies']['BTC']['buy'])
+print('Bitcoin para venda: ', cotacao['results']['currencies']['BTC']['sell'])
