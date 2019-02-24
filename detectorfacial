@@ -1,0 +1,17 @@
+# Aqui temos um sistema de detecção facial baseado no classificador do opencv
+# como sempre simples e direto como python deve ser.
+
+import cv2  #importe a biblioteca do opencv
+
+classificador = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml') #crie uma variável com o classificador
+
+imagem = cv2.imread('pessoas/pessoas1.jpg') #crie uma variável com a imagem com as faces
+imgCinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY) #crie uma variável para tornar a imagem antes criada para torna-la em escala cinza
+
+# estabeleça o detector setando os níveis de sensibilidade do detector.
+facesDetect = classificador.detectMultiScale(imgCinza, scaleFactor=1.09, minNeighbors=9, minSize=(30, 30))
+for(x,y,l,a) in facesDetect:  #crie um laço que será o retangulo em volta da face com as coordenadas x e y e 'l' de largura e 'a' de altura
+    imagem = cv2.rectangle(imagem, (x, y), (x+l, y+a), (255, 0, 255), 2)  #cria o retangulo com as coordenadas e a cor dele junto com a espessura da borda do retangulo
+
+    cv2.imshow("Faces e olhos detectadas", imagem)# cria uma legenda na janela aberta com as imagens
+    cv2.waitKey()# aguarda até que uma tecla seja pressionada para funcionar
