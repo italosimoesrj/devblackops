@@ -1,0 +1,10 @@
+import random
+
+lista = [] #cria uma lista vazia onde entrarao os numeros
+
+while len(lista)<6: #cria um laço com 6 posicoes
+    x = random.randint(1,60)    #inicia uma variavel com um intervalo de 1 a 60 numeros aleatorios
+    if x not in lista:         #se x nao estiver na lista
+        lista.append(x)         #adiciona um numero
+lista.sort()                    #organiza-os em ordem crescente
+print(lista)                    #imprime a lista
