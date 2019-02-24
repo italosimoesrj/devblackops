@@ -1,3 +1,6 @@
+#sistema de geração de 6 números aleatórios
+#autor: Ítalo Simões
+
 import random
 
 lista = [] #cria uma lista vazia onde entrarao os numeros
