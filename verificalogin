@@ -1,0 +1,23 @@
+# sistema de verificação de login usando o sqlite3 como db
+#autor: italosimoesrj
+
+import sqlite3 #importa a biblioteca do sqlite3
+
+conn = sqlite3.connect('dados.db') #cria uma variável selecionando o banco de dados
+sql = "SELECT nome FROM pessoais" #cria uma variável apontando a tabela do banco
+cursor = conn.cursor() #cria um cursor chamando o objeto conn
+cursor.execute(sql) # faz um bound executando apontando o cursor para o início da tabela
+results= cursor.fetchall() #seleciona todo conteúdo da tabela através do "fetchall"
+
+while True: #fazemos agora um laço para o usuário logar
+    log = str(input("Digite seu nome: ")) # imprime o comando para logar
+
+    for i in results: #vamos agora percorrer os resultados e comparar com o login
+        
+        if (log in i): # criamos uma condicional baseada na comparação anterior
+            print("Bem vindo! ", log) #caso positivo,dá as boas vindas
+            break
+    else:
+        print("Usuario invalido!")  #se não usuário inválido e volta ao início do laço pedindo novamente o login
+
+conn.close()  #encerra a conexão
