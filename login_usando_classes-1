@@ -1,0 +1,27 @@
+import sqlite3
+
+class Conecta:
+
+    def verifica(self):
+        self.conn = sqlite3.connect('dados.db')
+        self.sql = 'SELECT nome FROM pessoais'
+        self.curs = self.conn.cursor()
+        self.curs.execute(self.sql)
+        self.resultado = self.curs.fetchall()
+
+        while True:
+            x = input("Informe seu nome: ")
+            for i in self.resultado:
+                if x in i:
+                    print('Ola {}' .format(x))
+                    break
+                else:
+                    print("Erro na verificaçao, tente novamente")
+                    continue
+
+
+
+        try:
+            self.conn.close()
+        except AttributeError:
+            pass
