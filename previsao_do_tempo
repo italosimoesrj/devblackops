@@ -1,0 +1,24 @@
+# sistema de aprendizado de maquina baseado na previsão do tempo
+#A relação é feita com os dados de [temperatura, humidade] e as
+# condições do clima.
+
+from sklearn import tree
+
+chove=1
+nublado=0
+
+cond = [[30 , 80],[33,85],[35,60],[37,70],[40,90],[40,70]]
+result = [nublado,chove,nublado,chove,chove,nublado]
+
+clsf = tree.DecisionTreeClassifier()
+clsf = clsf.fit(cond,result)
+
+temp = input("Informe a temperatura: ")
+umid = input("Informe a umidade: ")
+
+cond_clima = clsf.predict([[temp,umid]])
+
+if cond_clima ==1:
+    print("Vai chover, leve um guarda-chuva")
+else:
+    print("Tempo nublado!")
